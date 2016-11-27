@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+
+    }
+
+    bintray {
+        user = 'livin21'
+        key = 'e2d30d37c999bad20b0408042583f63f04702e5e'
+        pkg {
+            repo = 'maven'
+            name = 'com.lmntrx.livin.library.droidawesome'
+
+            version {
+                name = '1.0.0'
+                desc = 'First upload'
+                released  = new Date()
+                vcsTag = '1.0.0'
+            }
+
+            licenses = ['Apache-2.0']
+            vcsUrl = 'https://github.com/Livin21/DroidAwesome.git'
+            websiteUrl = 'https://github.com/Livin21/DroidAwesome'
+        }
+        configurations = ['archives']
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    testCompile 'junit:junit:4.12'
+}
