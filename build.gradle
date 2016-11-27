@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -9,37 +9,27 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
     }
 
-    bintray {
-        user = 'livin21'
-        key = 'e2d30d37c999bad20b0408042583f63f04702e5e'
-        pkg {
-            repo = 'maven'
-            name = 'com.lmntrx.livin.library.droidawesome'
-
-            version {
-                name = '1.0.0'
-                desc = 'First upload'
-                released  = new Date()
-                vcsTag = '1.0.0'
-            }
-
-            licenses = ['Apache-2.0']
-            vcsUrl = 'https://github.com/Livin21/DroidAwesome.git'
-            websiteUrl = 'https://github.com/Livin21/DroidAwesome'
-        }
-        configurations = ['archives']
-    }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
+}
+
+publish {
+    userOrg = 'lmntrx-tech'
+    groupId = 'com.lmntrx.livin.library.droidawesome'
+    repoName = 'DroidAwesome'
+    artifactId = 'droid-awesome'
+    publishVersion = '1.0.1'
+    desc = 'Custom Views that support FontAwesome directly'
+    website = 'https://github.com/Livin21/DroidAwesome'
 }
 
 dependencies {
